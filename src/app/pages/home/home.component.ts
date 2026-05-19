@@ -1,22 +1,15 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ProductService } from '../../services/product.service';
+
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class Home implements OnInit {
-  products: any[] = [];
+export class Home {
 
-  private productService = inject(ProductService);
-
-  ngOnInit() {
-    this.productService.getProducts().subscribe(data => {
-      this.products = data;
-    });
-  }
+  
 }
