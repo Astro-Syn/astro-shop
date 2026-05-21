@@ -14,7 +14,16 @@ import { CartService } from '../../services/cart.service';
 export class CartComponent {
   items: any[] = [];
 
-  constructor(private cartService: CartService){
-    this.items = this.cartService.getItems();
-  }
+  totalPrice = 0;
+
+
+constructor(private cartService: CartService) {
+
+  this.items = this.cartService.getItems();
+
+  this.totalPrice = this.cartService.getTotalPrice();
+}
+
+
+
 }

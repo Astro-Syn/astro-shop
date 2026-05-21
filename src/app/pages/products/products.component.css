@@ -18,6 +18,14 @@
     z-index: 1;
 }
 
+.card h3 {
+    margin: 0 1.5em 0 1.5em;
+}
+
+.card p {
+    margin: 0.3em;
+}
+
 .card::before{
     position: absolute;
     content: "";
@@ -36,9 +44,10 @@
 }
 
 img {
-    width: 100%;
+    min-width: 100px;
     height: 200px;
     object-fit: contain;
+    margin: 1rem;
 }
 
 .add-to-cart-btn {
@@ -47,4 +56,16 @@ img {
     letter-spacing: 1px;
     background: white;
     margin-bottom: 0.3em;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+}
+
+.add-to-cart-btn:hover {
+    background: black;
+    color: white;
+}
+
+.add-to-cart-btn:active {
+    background: rgb(0, 255, 191);
+    color: black;
 }

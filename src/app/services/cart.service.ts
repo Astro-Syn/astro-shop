@@ -15,4 +15,14 @@ export class CartService {
   getItems(){
     return this.items;
   }
+
+  getTotalPrice(){
+    let total = 0;
+
+    this.items.forEach(item => {
+      total += item.price;
+    });
+
+    return total;
+  }
 }

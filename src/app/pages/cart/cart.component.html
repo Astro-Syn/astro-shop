@@ -1,13 +1,29 @@
 <h2>Your Cart</h2>
 
-<div 
+
+<div class=" border-black border-1 m-6">
+  <div 
 *ngFor="let item of items"
-class="flex flex-col justify-center items-center"
+class="flex flex-row  bg-gray-500 p-2.5 m-2.5 w-[70%] "
 >
-    <p>{{ item.title}}</p>
+<div class="flex flex-row justify-between items-center w-full">
+    <img 
+      class="w-30"
+      [src]="item.image" [alt]="item.title" />
+
+
+<div class="flex flex-row gap-10 justify-between items-end">
+     <p>{{ item.title}}</p>
     <p>{{ item.price}}</p>
-      <img [src]="item.image" [alt]="item.title" />
+</div>
+</div>
+  
+ 
+  
     
+</div>
+
+<h2>Total: ${{ totalPrice }}</h2>
 </div>
 
 

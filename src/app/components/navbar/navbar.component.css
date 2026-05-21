@@ -6,10 +6,19 @@
     padding: 1rem;
     background: black;
     color: white;
+    font-family: "Oxanium", monospace;
 }
 
 ul {
     display: flex;
     gap: 1rem;
     list-style: none;
+}
+
+ul a {
+    transition: 0.3s ease-in;
+}
+
+ul a:hover {
+    color: aqua;
 }
