@@ -1,6 +1,9 @@
 <h2>Your Cart</h2>
 
-<div *ngFor="let item of items">
+<div 
+*ngFor="let item of items"
+class="flex flex-col justify-center items-center"
+>
     <p>{{ item.title}}</p>
     <p>{{ item.price}}</p>
       <img [src]="item.image" [alt]="item.title" />
