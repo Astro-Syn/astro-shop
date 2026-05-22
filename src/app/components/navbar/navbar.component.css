@@ -27,3 +27,9 @@ ul a:hover {
     color: white;
     letter-spacing: 1px;
 } 
+
+.navbar h2 {
+     font-family: "Rubik Iso", system-ui, monospace;
+     font-size: 2em;
+     letter-spacing: -3px;
+}

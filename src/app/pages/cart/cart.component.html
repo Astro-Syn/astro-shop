@@ -1,10 +1,16 @@
-<h2>Your Cart</h2>
+<div class="checkout-wrapper">
+  <p>Checkout</p>
+</div>
+
+<div class="flex flex-row">
 
 
-<div class=" border-black border-1 m-6">
+<div class=" border-black border-1 m-20 p-3 w-[40%]">
+ 
+
   <div 
 *ngFor="let item of items"
-class="flex flex-row  bg-gray-500 p-2.5 m-2.5 w-[70%] "
+class="m-3"
 >
 <div class="flex flex-row justify-between items-center w-full">
     <img 
@@ -17,13 +23,20 @@ class="flex flex-row  bg-gray-500 p-2.5 m-2.5 w-[70%] "
     <p>{{ item.price}}</p>
 </div>
 </div>
-  
- 
+
   
     
 </div>
 
-<h2>Total: ${{ totalPrice }}</h2>
+
+</div>
+
+<div class="total-box flex justify-center items-center">
+  <div class="total-price-box">
+       <h2>Total: ${{ totalPrice }}</h2>
+  </div>
+ 
+</div>
 </div>
 
 

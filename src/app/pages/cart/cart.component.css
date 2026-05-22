@@ -1,0 +1,62 @@
+.checkout-wrapper{
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 86%, 96% 100%, 70% 100%, 67% 91%, 39% 91%, 34% 100%, 5% 100%, 0 87%);
+    background: var(--secondary-col);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-col);
+    width: 50vw;
+    height: 15vh;
+    font-size: 2.5em;
+    border: 2px solid var(--secondary-col);
+    animation: slideDown 1s forwards;
+}
+
+.checkout-wrapper p {
+    background: var(--main-col);
+    color: var(--secondary-col);
+    width: 100%;
+    padding-left: 0.5em;
+}
+
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30%)
+
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(20%);
+    }
+}
+
+.total-price-box {
+    width: 20vw;
+    padding: 1em;
+    font-size: 1.5em;
+    background: var(--secondary-col);
+    color: var(--main-col);
+    clip-path: polygon(100% 0, 100% 34%, 84% 34%, 84% 43%, 100% 43%, 100% 92%, 45% 92%, 41% 100%, 0 100%, 0 0);
+    animation: swoopIn 2.1s forwards;
+}
+
+
+@keyframes swoopIn {
+    0% {
+        opacity: 0;
+        transform: translateX(0%);
+    }
+
+    50% {
+        opacity: 0;
+        transform: translateX(-20%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
