@@ -1,7 +1,40 @@
 @import "tailwindcss";
 
 
+:root{
+    --main-col: rgb(209, 255, 102);
+    --secondary-col: rgb(2, 8, 21);
+}
+
 body {
     margin: 0;
      font-family: "Oxanium", monospace;
+     background: var(--main-col);
+     color: var(--secondary-col);
+}
+
+* {
+  scrollbar-width:auto;          
+  scrollbar-color:  var(--secondary-col); 
+}
+
+
+::-webkit-scrollbar {
+  width: 12px;               
+  height: 12px;              
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-col);       
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-col);          
+  border-radius: 10px;
+  border: 2px solid var(--secondary-col); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(183, 255, 90);        
 }

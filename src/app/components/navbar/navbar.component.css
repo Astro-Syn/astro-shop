@@ -1,11 +1,15 @@
 .navbar {
+    position: fixed;
+    width: 100vw;
+    z-index: 99;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
     padding: 1rem;
-    background: black;
-    color: white;
+    padding-right: 3rem;
+    background: var(--secondary-col);
+    color: var(--main-col);
     font-family: "Oxanium", monospace;
 }
 
@@ -20,5 +24,6 @@ ul a {
 }
 
 ul a:hover {
-    color: aqua;
-}
+    color: white;
+    letter-spacing: 1px;
+} 

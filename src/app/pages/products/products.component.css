@@ -1,8 +1,33 @@
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+    max-width: 1200px; 
+    margin: 0 auto;
+      
+    padding: 4em;
+}
+
+.card-wrapper {
+    display: flex;
+    padding-top: 0.5em;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     gap: 2em;
-    padding: 1em;
+    max-height: 40em;
+    position: relative;
+}
+
+.card-wrapper::after{
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 1em;
+    background: linear-gradient(to top, var(--secondary-col), var(--main-col));
+    z-index: 2;
 }
 
 .card {
@@ -10,7 +35,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: black;
+    background: var(--secondary-col);
+    height: 20em;
     padding: 1em;
     clip-path: polygon(0 0, 90% 0%, 100% 15%, 100% 100%, 13% 100%, 0% 90%);
     position: relative;
@@ -20,6 +46,7 @@
 
 .card h3 {
     margin: 0 1.5em 0 1.5em;
+    font-size: 1em;
 }
 
 .card p {
@@ -30,7 +57,7 @@
     position: absolute;
     content: "";
     clip-path: polygon(0 0, 90% 0%, 100% 15%, 100% 100%, 13% 100%, 0% 90%);
-    background: white;
+    background: var(--main-col);
     inset: 1px;
     z-index: 0;
 
@@ -39,33 +66,70 @@
 .card > * {
     position: relative;
     z-index: 2;
-    color: black;
+    color: var(--secondary-col);
     
 }
 
 img {
     min-width: 100px;
-    height: 200px;
+    height: 150px;
     object-fit: contain;
     margin: 1rem;
 }
 
 .add-to-cart-btn {
-    border: 1px solid black;
+    border: 1px solid rgb(186, 255, 165);
+    color: var(--main-col);
     padding: 0.5em;
     letter-spacing: 1px;
-    background: white;
+    background: var(--secondary-col);
     margin-bottom: 0.3em;
     cursor: pointer;
     transition: 0.2s ease-in;
 }
 
 .add-to-cart-btn:hover {
-    background: black;
-    color: white;
+    color: var(--secondary-col);
+    background: var(--main-col);
 }
 
 .add-to-cart-btn:active {
-    background: rgb(0, 255, 191);
-    color: black;
+    background: rgb(13, 8, 22);
+    color: rgb(174, 255, 147);
+    padding: 2px;
 }
+
+.title-container {
+position: fixed;
+ width: 10vw;
+ height: 95vh;
+ top: 5vh;
+ left: 0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+background: var(--main-col);
+color: var(--main-col);
+clip-path: polygon(0 0, 86% 0, 100% 6%, 100% 22%, 94% 26%, 92% 68%, 100% 73%, 100% 94%, 85% 100%, 0 100%);
+transform: 0.5s ease-in forwards;
+}
+
+.title-container::before {
+    position: absolute;
+    content: "";
+   clip-path: polygon(0 0, 86% 0, 100% 6%, 100% 22%, 94% 26%, 92% 68%, 100% 73%, 100% 94%, 85% 100%, 0 100%);
+   background: var(--secondary-col);
+   inset: 1px;
+}
+
+.title-container p{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    transform: rotate(-90deg);
+    font-size: 3em;
+    width: 100vw;
+    color: var(--secondary-col);
+    background: var(--main-col);
+}
+
