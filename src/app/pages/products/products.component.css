@@ -111,7 +111,19 @@ position: fixed;
 background: var(--main-col);
 color: var(--main-col);
 clip-path: polygon(0 0, 86% 0, 100% 6%, 100% 22%, 94% 26%, 92% 68%, 100% 73%, 100% 94%, 85% 100%, 0 100%);
-transform: 0.5s ease-in forwards;
+animation: slideIn 1s forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-4em);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(1)
+    }
 }
 
 .title-container::before {
