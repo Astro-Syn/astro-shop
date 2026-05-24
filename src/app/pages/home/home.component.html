@@ -1,7 +1,7 @@
 <div class="home-wrapper ">
 
 <div class="middle-attraction">
-  <div class="home-title bg-red-400">
+  <div class="home-title">
       <h2>Astro Shop</h2>
   </div>
   <div>
@@ -10,7 +10,13 @@
 
 
   <div class="home-button-container">
-     <button>Browse Products</button>
+
+     <button>
+      <a routerLink="/products">
+        Browse Products
+      </a>
+      
+    </button>
 
     <div class="button-deco-box-wrapper">
         <div></div>
@@ -19,10 +25,30 @@
         <div></div>
     </div>
 
-  <button >About</button>
+  <button (click)="openAbout()">About</button>
+    <div class="modal-backdrop" *ngIf="showAbout">
+    <div class="modal">
+      <h2>About Astro Market</h2>
+
+
+      <p>
+      Astro Market is a demo e-commerce app built with Angular using the Fake Store API.
+    </p>
+
+    <p>
+      It focuses on routing, components, and API integration.
+    </p>
+
+    <button (click)="closeAbout()">x</button>
+    </div>
+
+  </div>
+
   </div>
  
 </div>
+
+
 </div>
 
 

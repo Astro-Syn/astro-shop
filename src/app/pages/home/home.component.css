@@ -8,9 +8,29 @@
     overflow: hidden;
 }
 
+
+.home-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.home-title::before {
+    position: absolute;
+    content: "";
+    width: 6.5em;
+    height: 10em;
+    background: var(--main-col);
+    bottom: 1em;
+    left: 0;
+     mix-blend-mode: difference;
+     
+}
+
 .home-title h2 {
     font-family: "Rubik Iso", system-ui, monospace;
-    font-size: 7em;
+    font-size: 9em;
     font-weight: bold;
     letter-spacing: -4px;
 }
@@ -32,10 +52,17 @@
 }
 
 .home-button-container button {
-       width: 20em;
+    width: 20em;
     height: 4em;
     background: var(--secondary-col);
     color: var(--main-col);
+    transition: 0.3s ease-in-out;
+}
+
+.home-button-container button:hover {
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.872);
 }
 
 .home-button-container button:first-child{
@@ -60,4 +87,32 @@ clip-path: polygon(60% 0, 64% 14%, 100% 16%, 100% 80%, 93% 100%, 0 100%, 0 0);
     width: 10px;
     height: 10px;
     background: var(--secondary-col);
+}
+
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal {
+    background: var(--secondary-col);
+    color: var(--main-col);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    width: 30em;
+    height: 30em;
+   clip-path: polygon(0 11%, 11% 0, 100% 0, 100% 89%, 89% 100%, 0 100%);
 }
