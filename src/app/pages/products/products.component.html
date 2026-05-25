@@ -2,8 +2,14 @@
 <p>Our products</p>
 </div>
 
+<div class="products-wrapper flex flex-col justify-center items-center mt-25">
+    <input
+type="text"
+placeholder="Search products..."
+[(ngModel)]="searchTerm"
+/>
 <div class="product-grid">
-  <div class="card-wrapper" *ngFor="let product of products">
+  <div class="card-wrapper" *ngFor="let product of filteredProducts">
 
     <div class="card">
             <img [src]="product.image" [alt]="product.title" />
@@ -15,4 +21,5 @@
     (click)="addToCart(product)"
     >Add to Cart</button>
   </div>
+</div>
 </div>
