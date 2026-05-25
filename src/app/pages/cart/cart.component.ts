@@ -16,6 +16,16 @@ export class CartComponent {
 
   totalPrice = 0;
 
+  increase(item: any) {
+  this.cartService.increase(item);
+  this.totalPrice = this.cartService.getTotalPrice();
+}
+
+decrease(item: any) {
+  this.cartService.decrease(item);
+  this.totalPrice = this.cartService.getTotalPrice();
+}
+
 
 constructor(private cartService: CartService) {
 
