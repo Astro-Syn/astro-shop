@@ -3,12 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
+import { RouterLink } from "@angular/router";
 
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })
@@ -17,6 +18,7 @@ import { CartService } from '../../services/cart.service';
 export class ProductsComponent {
   searchTerm: string = '';
   selectedCategory: string = 'all';
+  sortOption: string = '';
 
   constructor(private cartService: CartService){
 
@@ -29,8 +31,9 @@ export class ProductsComponent {
 
   products: any[] = [];
 
-  get filteredProducts() {
-  return this.products.filter(product => {
+get filteredProducts() {
+
+  let filtered = this.products.filter(product => {
 
     const matchesSearch =
       product.title.toLowerCase().includes(this.searchTerm.toLowerCase());
@@ -41,6 +44,16 @@ export class ProductsComponent {
 
     return matchesSearch && matchesCategory;
   });
+
+  if (this.sortOption === 'low-high') {
+    filtered.sort((a, b) => a.price - b.price);
+  }
+
+  if (this.sortOption === 'high-low') {
+    filtered.sort((a, b) => b.price - a.price);
+  }
+
+  return filtered;
 }
 
   private productService = inject(ProductService);

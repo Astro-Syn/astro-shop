@@ -8,14 +8,46 @@ type="text"
 placeholder="Search products..."
 [(ngModel)]="searchTerm"
 />
+
+<select [(ngModel)]="selectedCategory">
+  <option value="all">All</option>
+  <option value="electronics">Electronics</option>
+  <option value="jewlery">Jewlery</option>
+  <option value="men's clothing">Men's Clothing</option>
+  <option value="women's clothing">Women's Clothing</option>
+</select>
+
+
+<select [(ngModel)]="sortOption">
+
+  <option value="">Sort By</option>
+
+  <option value="low-high">
+    Price: Low to High
+  </option>
+
+  <option value="high-low">
+    Price: High to Low
+  </option>
+
+</select>
+
+
+
 <div class="product-grid">
   <div class="card-wrapper" *ngFor="let product of filteredProducts">
 
-    <div class="card">
-            <img [src]="product.image" [alt]="product.title" />
+    <a [routerLink]="['/products', product.id]">
+
+  <div class="card">
+    <img [src]="product.image" [alt]="product.title" />
+
     <h3>{{ product.title }}</h3>
+
     <p>${{ product.price }}</p>
-    </div>
+  </div>
+
+</a>
 
     <button class="add-to-cart-btn"
     (click)="addToCart(product)"
