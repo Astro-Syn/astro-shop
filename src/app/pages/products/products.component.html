@@ -12,7 +12,7 @@ placeholder="Search products..."
 <select [(ngModel)]="selectedCategory">
   <option value="all">All</option>
   <option value="electronics">Electronics</option>
-  <option value="jewlery">Jewlery</option>
+  <option value="jewelery">Jewelery</option>
   <option value="men's clothing">Men's Clothing</option>
   <option value="women's clothing">Women's Clothing</option>
 </select>
@@ -34,7 +34,22 @@ placeholder="Search products..."
 
 
 
-<div class="product-grid">
+<div class="product-grid" *ngIf="loading">
+
+  <div class="skeleton-card" *ngFor="let item of [1,2,3,4]">
+
+    <div class="skeleton-image"></div>
+
+    <div class="skeleton-title"></div>
+
+    <div class="skeleton-price"></div>
+
+  </div>
+
+</div>
+
+
+<div class="product-grid" *ngIf="!loading">
   <div class="card-wrapper" *ngFor="let product of filteredProducts">
 
     <a [routerLink]="['/products', product.id]">

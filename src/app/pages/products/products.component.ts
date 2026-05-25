@@ -19,7 +19,7 @@ export class ProductsComponent {
   searchTerm: string = '';
   selectedCategory: string = 'all';
   sortOption: string = '';
-
+  loading = true;
   constructor(private cartService: CartService){
 
   }
@@ -61,6 +61,7 @@ get filteredProducts() {
   ngOnInit(){
     this.productService.getProducts().subscribe(data => {
       this.products = data;
+      this.loading = false;
     })
   }
 }
