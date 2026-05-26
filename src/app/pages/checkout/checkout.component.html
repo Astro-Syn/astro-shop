@@ -1,0 +1,38 @@
+<div class="checkout-container">
+
+  <h2>Checkout</h2>
+
+  <form [formGroup]="checkoutForm" (ngSubmit)="submitOrder()">
+
+    <div>
+      <label>Full Name</label>
+      <input formControlName="fullName" />
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input formControlName="email" />
+    </div>
+
+    <div>
+      <label>Address</label>
+      <input formControlName="address" />
+    </div>
+
+    <div>
+      <label>City</label>
+      <input formControlName="city" />
+    </div>
+
+    <div>
+      <label>Postal Code</label>
+      <input formControlName="postalCode" />
+    </div>
+
+    <button type="submit">
+      Place Order
+    </button>
+
+  </form>
+
+</div>
