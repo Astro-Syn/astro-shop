@@ -7,6 +7,13 @@ import { isPlatformBrowser } from '@angular/common';
   providedIn: 'root'
 })
 export class CartService {
+
+  private itemsSubject = new BehaviorSubject<any[]>([]);
+items$ = this.itemsSubject.asObservable();
+
+private totalSubject = new BehaviorSubject<number>(0);
+total$ = this.totalSubject.asObservable();
+
   private platformId = inject(PLATFORM_ID);
 
   items: any[] = [];
@@ -15,11 +22,16 @@ export class CartService {
   cartCount$ = this.cartCount.asObservable();
 
   constructor() {
+
     if (isPlatformBrowser(this.platformId)) {
+
       const savedCart = localStorage.getItem('cartItems');
 
       if (savedCart) {
         this.items = JSON.parse(savedCart);
+
+        this.itemsSubject.next(this.items);
+        this.totalSubject.next(this.getTotalPrice());
       }
 
       this.cartCount.next(this.getCartCount());
@@ -28,15 +40,25 @@ export class CartService {
 
 
   private saveCart() {
+
     if (!isPlatformBrowser(this.platformId)) return;
 
-    localStorage.setItem('cartItems', JSON.stringify(this.items));
+    localStorage.setItem(
+      'cartItems',
+      JSON.stringify(this.items)
+    );
 
     this.cartCount.next(this.getCartCount());
+
+    this.itemsSubject.next(this.items);
+
+    this.totalSubject.next(
+      this.getTotalPrice()
+    )
   }
 
- 
   private getCartCount(): number {
+
     return this.items.reduce(
       (total, item) => total + item.quantity,
       0
@@ -45,6 +67,7 @@ export class CartService {
 
 
   addToCart(product: any) {
+
     const existingItem = this.items.find(
       item => item.id === product.id
     );
@@ -52,6 +75,7 @@ export class CartService {
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
+
       this.items.push({
         ...product,
         quantity: 1
@@ -63,30 +87,48 @@ export class CartService {
 
  
   increase(item: any) {
+
     item.quantity += 1;
+
+    this.saveCart();
+  }
+
+
+  decrease(item: any) {
+
+    item.quantity -= 1;
+
+    if (item.quantity <= 0) {
+
+      this.items = this.items.filter(
+        i => i.id !== item.id
+      );
+    }
+
     this.saveCart();
   }
 
  
-  decrease(item: any) {
-    item.quantity -= 1;
+  remove(item: any) {
 
-    if (item.quantity <= 0) {
-      this.items = this.items.filter(i => i.id !== item.id);
-    }
+    this.items = this.items.filter(
+      i => i.id !== item.id
+    );
 
     this.saveCart();
   }
 
   
   getItems() {
+
     return this.items;
   }
 
-
   getTotalPrice() {
+
     return this.items.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (total, item) =>
+        total + item.price * item.quantity,
       0
     );
   }

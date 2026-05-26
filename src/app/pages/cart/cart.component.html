@@ -9,7 +9,7 @@
  
 
   <div 
-*ngFor="let item of items"
+*ngFor="let item of items$ | async"
 class="m-3"
 >
 <div class="flex flex-row justify-between items-center w-full">
@@ -30,6 +30,9 @@ class="m-3"
 
       <button (click)="increase(item)">+</button>
     </div>
+
+    <button (click)="remove(item)">Remove</button>
+   
     
 </div>
 </div>
@@ -43,7 +46,7 @@ class="m-3"
 
 <div class="total-box flex justify-center items-center">
   <div class="total-price-box">
-       <h2>Total: ${{ totalPrice }}</h2>
+       <h2>Total: ${{ total$ | async }}</h2>
   </div>
  
 </div>

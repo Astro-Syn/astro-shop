@@ -6,7 +6,8 @@
         <a routerLink="/products">Products</a>
         <a routerLink="/cart">Cart
 
-            <span class="p-1 m-1 bg-(--main-col) text-(--secondary-col)">{{ cartItemCount}}</span>
+            <span class="p-1 m-1 bg-(--main-col) text-(--secondary-col)">{{ cartCount$ | async }}</span>
+            
         </a>
     </ul>
 </nav>
