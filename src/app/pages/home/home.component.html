@@ -1,19 +1,19 @@
 <div class="home-wrapper ">
+ 
+ 
 
 <div class="middle-attraction">
   <div class="home-title">
       <h2>Astro Shop</h2>
   </div>
-  <div>
-    Powered by FakeStoreAPI
-  </div>
 
+  
 
   <div class="home-button-container">
 
      <button>
       <a routerLink="/products">
-        Browse Products
+        <p>Browse Products</p>
       </a>
       
     </button>
@@ -25,7 +25,9 @@
         <div></div>
     </div>
 
-  <button (click)="openAbout()">About</button>
+  <button (click)="openAbout()">
+    <p>About</p>
+  </button>
     <div class="modal-backdrop" *ngIf="showAbout">
     <div class="modal">
       <h2>About Astro Market</h2>
@@ -45,9 +47,21 @@
   </div>
 
   </div>
+  
  
 </div>
+ <div class="flash-info-bar">
+    <div class='info-text-wrapper'>
 
+   
+<p>Limited Offer</p>
+<p>Flash Sale</p>
+<p>Unique Products</p>
+<p>Limited Offer</p>
+<p>Flash Sale</p>
+<p>Unique Products</p>
+ </div>
+  </div>
 
 </div>
 

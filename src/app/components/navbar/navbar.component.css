@@ -2,8 +2,9 @@
     position: fixed;
     width: 100vw;
     z-index: 99;
+    height: 4em;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
     align-items: center;
     padding: 1rem;
@@ -15,21 +16,21 @@
 
 ul {
     display: flex;
-    gap: 1rem;
+    gap: 10rem;
     list-style: none;
 }
 
 ul a {
     transition: 0.3s ease-in;
+    letter-spacing: 3px;
+    font-size: 1.2em;
+    padding: 2px;
 }
 
 ul a:hover {
     color: white;
-    letter-spacing: 1px;
+    border: 1px solid green;
+    
+
 } 
 
-.navbar h2 {
-     font-family: "Rubik Iso", system-ui, monospace;
-     font-size: 2em;
-     letter-spacing: -3px;
-}
