@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/Addons.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 @Component({
   selector: 'app-moon',
@@ -8,108 +8,62 @@ import { OrbitControls } from 'three/examples/jsm/Addons.js';
   templateUrl: './moon.component.html',
   styleUrl: './moon.component.css'
 })
-export class MoonComponent {
+export class MoonComponent implements AfterViewInit {
 
- @ViewChild('canvasContainer')
+  @ViewChild('canvasContainer')
   container!: ElementRef<HTMLDivElement>;
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
+
     const scene = new THREE.Scene();
 
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      this.container.nativeElement.clientWidth /
-      this.container.nativeElement.clientHeight,
-      0.1,
-      1000
-    );
+    const container = this.container.nativeElement;
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    camera.position.z = 2;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(width, height);
+
+    container.appendChild(renderer.domElement);
+
+    const textureLoader = new THREE.TextureLoader();
+    const moonTexture = textureLoader.load('/Images/moon-txt.jpg');
+    const moonBump = textureLoader.load('/Images/moon-bump.jpg');
+
+    const geometry = new THREE.SphereGeometry(1, 64, 64);
+
+    const material = new THREE.MeshStandardMaterial({
+      map: moonTexture,
+      bumpMap: moonBump,
+      bumpScale: 3,
+      roughness: 1
     });
 
-    renderer.setSize(
-      this.container.nativeElement.clientWidth,
-      this.container.nativeElement.clientHeight
-    );
+    const moon = new THREE.Mesh(geometry, material);
+    scene.add(moon);
 
-    this.container.nativeElement.appendChild(
-      renderer.domElement
-    );
+    const light = new THREE.DirectionalLight(0xffffff, 3);
+    light.position.set(5, 2, 5);
+    scene.add(light);
 
- 
-//renderer
-const w = window.innerWidth;
-const h = window.innerHeight;
+    scene.add(new THREE.AmbientLight(0xffffff, 0.2));
 
-renderer.setSize(w, h);
-document.body.appendChild(renderer.domElement);
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
 
+    const animate = () => {
+      requestAnimationFrame(animate);
 
-//camera
+      moon.rotation.y += 0.002;
 
+      controls.update();
+      renderer.render(scene, camera);
+    };
 
-
-camera.position.z = 2;
-
-
-//textures
-const textureLoader = new THREE.TextureLoader();
-const moonTexture = textureLoader.load('Images/moon-txt.jpg')
-const moonBump = textureLoader.load('Images/moon-bump.jpg')
-
-
-//controls
-
-const controls = new OrbitControls(camera, renderer.domElement)
-controls.enableDamping = true;
-controls.dampingFactor = 0.2;
-
-//scene
-
-
-
-const geomerty = new THREE.SphereGeometry(1, 64, 64);
-const material = new THREE.MeshStandardMaterial(
-    {
-        map: moonTexture,
-        bumpMap: moonBump,
-        bumpScale: 3,
-        roughness: 1,
-        metalness: 0,
-        
-    }
-)
-
-const mesh = new THREE.Mesh(geomerty, material)
-
-scene.add(mesh)
-
-
-
-
-const light = new THREE.DirectionalLight(0xffffff, 3);
-scene.add(light)
-light.position.set(5, 2, 5);
-
-
-scene.add(new THREE.AmbientLight(0xffffff, 0.2));
-
-
-function animate(t = 0){
-    requestAnimationFrame(animate)
-    mesh.rotation.y = t * 0.0001;
-    renderer.render(scene, camera);
-    controls.update()
-
-}
-
-animate()
-
-
-
-
-
+    animate();
   }
 }

@@ -8,19 +8,7 @@
     overflow: hidden;
 }
 
-.home-wrapper::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url('/Images/moon-texture.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: contrast(100%) invert(10%);
-    opacity: 0.6;
-    z-index: 0;
-    pointer-events: none;
-}
+
 
 .middle-attraction {
     position: relative;

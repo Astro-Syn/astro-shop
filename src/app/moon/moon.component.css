@@ -1,0 +1,12 @@
+.moon-container {
+    width: 900px;
+    height: 900px;
+    background: var(--main-col);
+    
+}
+
+app-moon {
+  display: block;
+  width: 100%;
+  height: 100vh;
+}
