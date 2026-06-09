@@ -1,12 +1,18 @@
 .moon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 900px;
-    height: 900px;
-    background: var(--main-col);
+    height: 100vh;
+    position: relative;
+    pointer-events: none;
     
 }
 
 app-moon {
-  display: block;
+position: absolute;
+top: 50%;
   width: 100%;
   height: 100vh;
 }

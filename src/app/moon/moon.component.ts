@@ -43,8 +43,23 @@ export class MoonComponent implements AfterViewInit {
       roughness: 1
     });
 
+
+
     const moon = new THREE.Mesh(geometry, material);
     scene.add(moon);
+
+
+    const wireMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff000f,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.5
+});
+
+
+  const wireMoon = new THREE.Mesh(geometry, wireMaterial)
+
+  moon.add(wireMoon)
 
     const light = new THREE.DirectionalLight(0xffffff, 3);
     light.position.set(5, 2, 5);
