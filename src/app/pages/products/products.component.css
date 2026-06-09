@@ -4,8 +4,38 @@
     gap: 1em;
     max-width: 1200px; 
     margin: 0 auto;
-      
     padding: 4em;
+}
+
+.search-products-bar {
+    background: var(--secondary-col);
+    color: var(--main-col);
+    width: 50%;
+    height: 4em;
+    padding: 1em;
+    letter-spacing: 1px;
+    margin-bottom: 1em;
+}
+
+.search-options-container {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.products-select {
+    background: var(--main-col);
+    color: var(--secondary-col);
+    border-top: none;
+    padding: 1em;
+ 
+}
+
+.products-select option {
+    background: var(--main-col);
+    color: var(--secondary-col);
 }
 
 .card-wrapper {

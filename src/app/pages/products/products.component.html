@@ -4,12 +4,16 @@
 
 <div class="products-wrapper flex flex-col justify-center items-center mt-25">
     <input
+    class="search-products-bar"
 type="text"
 placeholder="Search products..."
 [(ngModel)]="searchTerm"
 />
 
-<select [(ngModel)]="selectedCategory">
+
+<div class="search-options-container">
+
+<select [(ngModel)]="selectedCategory" class="products-select">
   <option value="all">All</option>
   <option value="electronics">Electronics</option>
   <option value="jewelery">Jewelery</option>
@@ -31,6 +35,7 @@ placeholder="Search products..."
   </option>
 
 </select>
+</div>
 
 
 
