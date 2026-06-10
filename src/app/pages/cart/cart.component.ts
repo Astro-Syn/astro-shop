@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
-import { RouterLink } from '@angular/router';
+import { CheckoutComponent } from '../checkout/checkout.component';
+
 
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, CheckoutComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
@@ -33,5 +34,15 @@ export class CartComponent {
 
   remove(item: any) {
     this.cartService.remove(item);
+  }
+
+  showCheckout = false;
+
+  openCheckout(){
+    this.showCheckout = true;
+  }
+
+  closeCheckout(){
+    this.showCheckout = false;
   }
 }

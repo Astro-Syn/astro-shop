@@ -24,12 +24,12 @@ ul a {
     transition: 0.3s ease-in;
     letter-spacing: 3px;
     font-size: 1.2em;
-    padding: 2px;
+    padding: 0 20px;
+    transition: 0.3s ease-in;
 }
 
 ul a:hover {
-    color: white;
-    border: 1px solid green;
+    border: 1px solid rgb(170, 16, 39);
     
 
 } 

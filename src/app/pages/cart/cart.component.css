@@ -11,6 +11,7 @@
     font-size: 2.5em;
     border: 2px solid var(--secondary-col);
     animation: slideDown 1s forwards;
+    
 }
 
 .checkout-wrapper p {
@@ -33,7 +34,19 @@
     }
 }
 
+.checkout-box-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+   
+
+}
+
 .total-price-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 20vw;
     padding: 1em;
     font-size: 1.5em;
@@ -59,4 +72,16 @@
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+.checkout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+    padding: 1em;
+    font-size: 1.5em;
+    background: var(--secondary-col);
+    color: var(--main-col);
+    clip-path: polygon(0 7%, 50% 7%, 54% 0, 100% 0, 100% 100%, 0 100%, 0 56%, 17% 56%, 17% 46%, 0 46%);
 }
